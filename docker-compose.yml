@@ -1,0 +1,35 @@
+version: "3.8"
+services:
+  mongo:
+    image: mongo:6
+    ports: ["27017:27017"]
+    volumes: ["mongodb_data:/data/db"]
+
+  mailhog:
+    image: mailhog/mailhog
+    ports: ["1025:1025","8025:8025"]
+
+  backend:
+    build: ./backend
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/tododb
+      - JWT_SECRET=supersecret
+      - NODE_ENV=development
+      - MAILHOG=true
+      - MAIL_HOST=mailhog
+      - APP_URL=http://localhost:5173
+    depends_on:
+      - mongo
+      - mailhog
+    ports:
+      - "4000:4000"
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:80"
+    environment:
+      - VITE_API_URL=http://localhost:4000
+
+volumes:
+  mongodb_data:
