@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  backend:
+    image: bhargav1605/todo-backend:latest
+    container_name: todo-backend
+    ports:
+      - "5000:5000"
+    restart: always
+
+  frontend:
+    image: bhargav1605/todo-frontend:latest
+    container_name: todo-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    restart: always
