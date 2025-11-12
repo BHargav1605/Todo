@@ -12,23 +12,23 @@ pipeline {
     stage('Build Backend') {
       steps {
         dir('backend') {
-          sh 'docker build -t $BACKEND_IMAGE .'
+          bat 'docker build -t $BACKEND_IMAGE .'
         }
       }
     }
     stage('Build Frontend') {
       steps {
         dir('frontend') {
-          sh 'docker build -t $FRONTEND_IMAGE .'
+          bat 'docker build -t $FRONTEND_IMAGE .'
         }
       }
     }
     stage('Push Images') {
       steps {
         withCredentials([usernamePassword(credentialsId: 'docker-hub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
-          sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
-          sh 'docker push $BACKEND_IMAGE'
-          sh 'docker push $FRONTEND_IMAGE'
+          bat 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
+          bat 'docker push $BACKEND_IMAGE'
+          bat 'docker push $FRONTEND_IMAGE'
         }
       }
     }
