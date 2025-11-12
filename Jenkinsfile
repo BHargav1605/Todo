@@ -63,10 +63,11 @@ pipeline {
     bat '''
     docker pull bhargav1605/todo-backend:%BUILD_NUMBER%
     docker pull bhargav1605/todo-frontend:%BUILD_NUMBER%
-    docker-compose -f deploy/docker-compose.yml up -d
+    docker-compose -f deploy/docker-compose.yml up -d --build
     '''
   }
 }
+
   }
 
   post {
