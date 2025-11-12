@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   environment {
-    REGISTRY = 'your-docker-registry' // e.g. docker.io/youruser
+    REGISTRY = 'bhargav1605' // e.g. docker.io/youruser
     BACKEND_IMAGE = "${env.REGISTRY}/todo-backend:${env.BUILD_NUMBER}"
     FRONTEND_IMAGE = "${env.REGISTRY}/todo-frontend:${env.BUILD_NUMBER}"
   }
