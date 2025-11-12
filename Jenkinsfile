@@ -69,6 +69,18 @@ pipeline {
 }
 
   }
+  stage('Deploy to Server') {
+  steps {
+    withCredentials([string(credentialsId: 'mongo-uri', variable: 'MONGO_URI')]) {
+      bat """
+        docker pull bhargav1605/todo-backend:${BUILD_NUMBER}
+        docker pull bhargav1605/todo-frontend:${BUILD_NUMBER}
+        set MONGO_URI=%MONGO_URI%
+        docker-compose -f deploy/docker-compose.yml up -d --build
+      """
+    }
+  }
+}
 
   post {
     success {

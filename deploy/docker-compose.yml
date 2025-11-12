@@ -1,6 +1,6 @@
 services:
   backend:
-    image: bhargav1605/todo-backend:latest
+    image: bhargav1605/todo-backend:${BUILD_NUMBER}
     ports:
       - "5000:5000"
     environment:
