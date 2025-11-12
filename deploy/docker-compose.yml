@@ -1,16 +1,18 @@
 services:
   backend:
-    image: bhargav1605/todo-backend:${BUILD_NUMBER}
-    container_name: todo-backend
+    image: bhargav1605/todo-backend:latest
     ports:
       - "5000:5000"
+    env_file:
+      - ./backend/.env
     restart: always
+
 
   frontend:
     image: bhargav1605/todo-frontend:${BUILD_NUMBER}
     container_name: todo-frontend
     ports:
-      - "3000:3000"
+      - "5173:5173"
     depends_on:
       - backend
     restart: always
