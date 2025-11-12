@@ -3,8 +3,8 @@ services:
     image: bhargav1605/todo-backend:latest
     ports:
       - "5000:5000"
-    env_file:
-      - ./backend/.env
+    environment:
+      - MONGO_URI=${MONGO_URI}
     restart: always
 
 
