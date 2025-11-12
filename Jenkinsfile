@@ -58,6 +58,15 @@ pipeline {
         }
       }
     }
+    stage('Deploy to Server') {
+  steps {
+    bat '''
+    docker pull bhargav1605/todo-backend:%BUILD_NUMBER%
+    docker pull bhargav1605/todo-frontend:%BUILD_NUMBER%
+    docker-compose -f deploy/docker-compose.yml up -d
+    '''
+  }
+}
   }
 
   post {
