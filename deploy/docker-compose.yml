@@ -4,7 +4,7 @@ services:
     ports:
       - "5000:5000"
     env_file:
-      - MONGO_URI=mongodb+srv://root:Test12345@todoapp.ay5ojgc.mongodb.net/tododb?retryWrites=true&w=majority&appName=todoapp
+      - ./backend/.env
     restart: always
 
 
