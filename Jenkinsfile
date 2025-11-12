@@ -53,7 +53,7 @@ pipeline {
                      Build URL: ${env.BUILD_URL}
                      Backend image: ${env.BACKEND_IMAGE}
                      Frontend image: ${env.FRONTEND_IMAGE}""",
-            to: 'faculty@example.edu'
+            to: 'mattabhargav.05@gmail.com'
           )
         }
       }
