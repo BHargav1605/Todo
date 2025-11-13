@@ -16,6 +16,9 @@ services:
     restart: always
     env_file:
       - ./backend/.env
+    environment:
+      MONGO_URI: mongodb://mongo:27017/todo   # ⬅ IMPORTANT FIX
+      JWT_SECRET: a7e0c6b7a469d05e8e81618d8230cb5f95ffec0ea2f9281b8e84cadab7ad6433              # ⬅ Ensure backend gets your JWT secret
     ports:
       - "4000:4000"
     depends_on:
