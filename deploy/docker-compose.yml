@@ -9,7 +9,7 @@ services:
       MONGO_URI: mongodb+srv://root:Test12345@todoapp.ay5ojgc.mongodb.net/tododb?retryWrites=true&w=majority&appName=todoapp
       JWT_SECRET: a7e0c6b7a469d05e8e81618d8230cb5f95ffec0ea2f9281b8e84cadab7ad6433
     ports:
-      - "4000:4000"
+      - "8000:8000"
 
   frontend:
     image: bhargav1605/todo-frontend:33
