@@ -3,11 +3,11 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
 
+dotenv.config();  // Load .env ONLY ONCE
+
 import authRoutes from "./routes/auth.js";
 import todoRoutes from "./routes/todos.js";
 import "./scheduler.js";
-
-dotenv.config();
 
 const app = express();
 app.use(cors());
@@ -19,7 +19,7 @@ app.use("/api/todos", todoRoutes);
 const MONGO = process.env.MONGO_URI;
 
 mongoose
-  .connect(MONGO, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(MONGO)
   .then(() => {
     console.log("✅ Mongo connected");
     app.listen(8000, () => console.log("🚀 Server running on port 8000"));
